@@ -1,0 +1,22 @@
+# Node dependencies
+backend/node_modules/
+frontend/node_modules/
+
+# Build files
+dist/
+build/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# SQLite database file
+backend/data.db
+
+# Environment variables
+.env
+
+# OS files
+.DS_Store
+Thumbs.db

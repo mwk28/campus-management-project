@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Campus Management — Demo</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <img src="Logo.png" alt="logo" class="logo" onerror="this.style.display='none'"/>
+      <div class="title-area">
+        <div class="title">NFSU Dharwad</div>
+        <div class="subtitle">Campus Management</div>
+      </div>
+    </div>
+
+    <div class="top-controls">
+      <div id="userShort" class="user-short">Not signed in</div>
+
+      <!-- hamburger -->
+      <button id="menuBtn" class="hamburger" aria-label="menu">
+        <span></span><span></span><span></span>
+      </button>
+
+      <div id="menuDropdown" class="menu-dropdown hidden">
+        <button id="reportBtn" class="menu-item">Report / Suggestions</button>
+        <button id="profileBtn" class="menu-item">User Info</button>
+        <button id="historyBtn" class="menu-item">History & Activities</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero card">
+      <div class="hero-left">
+        <h1>Welcome to Campus Management</h1>
+        <p class="muted">Manage library books, washing machines, sports items and more.</p>
+        <div class="actions">
+          <button id="openLogin">Sign in</button>
+          <button id="openDashboard" class="secondary">Open dashboard</button>
+        </div>
+      </div>
+      <div class="hero-right">
+        <img src="campus.jpg" alt="campus photo" class="campus-photo" onerror="this.src='https://via.placeholder.com/480x260/efe1c6/7a4a2a?text=Campus+Photo'"/>
+      </div>
+    </section>
+
+    <section id="mainArea"></section>
+  </main>
+
+  <!-- login modal -->
+  <div id="loginWrap" class="modal hidden">
+    <div class="modal-card">
+      <h3>Sign in (demo)</h3>
+      <input id="nameInput" placeholder="Your name (e.g. Rahul)" />
+      <input id="rollInput" placeholder="Roll / ID (optional)" />
+      <div class="row right">
+        <button id="signInBtn">Sign in</button>
+      </div>
+      <div class="small muted">No real authentication — just a demo identity.</div>
+    </div>
+  </div>
+
+  <!-- report modal -->
+  <div id="reportModal" class="modal hidden">
+    <div class="modal-card">
+      <h3>Report / Suggestion</h3>
+      <textarea id="reportText" placeholder="Describe the issue or suggestion..." rows="6"></textarea>
+      <div class="row" style="justify-content:space-between;margin-top:8px">
+        <div class="small muted">Your report will be saved locally for demo</div>
+        <div class="row">
+          <button id="sendReport">Send</button>
+          <button id="closeReport" class="secondary">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- profile modal -->
+  <div id="profileModal" class="modal hidden">
+    <div class="modal-card">
+      <h3>User Info</h3>
+      <div id="profileContent" class="small muted">No user signed in</div>
+      <div class="row right" style="margin-top:10px">
+        <button id="closeProfile" class="secondary">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- history modal -->
+  <div id="historyModal" class="modal hidden">
+    <div class="modal-card">
+      <h3>History & Activities</h3>
+      <div id="historyContent" class="small muted">No activities yet</div>
+      <div class="row right" style="margin-top:10px">
+        <button id="closeHistory" class="secondary">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer card">
+    <div>Made by Wasim Khan, Aditya Singh &amp; Yash Yadav</div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
