@@ -50,18 +50,41 @@
     <section id="mainArea"></section>
   </main>
 
-  <!-- login modal -->
+    <!-- login / register modal -->
   <div id="loginWrap" class="modal hidden">
     <div class="modal-card">
-      <h3>Sign in (demo)</h3>
-      <input id="nameInput" placeholder="Your name (e.g. Rahul)" />
-      <input id="rollInput" placeholder="Roll / ID (optional)" />
-      <div class="row right">
-        <button id="signInBtn">Sign in</button>
+      <h3>Sign in / Register</h3>
+
+      <input id="nameInput" placeholder="Full name (for register)" />
+      <input id="emailInput" placeholder="Email" />
+      <input id="passwordInput" type="password" placeholder="Password" />
+
+      <select id="courseYear">
+        <option value="">Select year</option>
+        <option value="1st Year">1st Year</option>
+        <option value="2nd Year">2nd Year</option>
+        <option value="3rd Year">3rd Year</option>
+        <option value="4th Year">4th Year</option>
+      </select>
+
+      <select id="courseProgram">
+        <option value="">Select course</option>
+        <option value="B.Tech">B.Tech</option>
+        <option value="B.Sc">B.Sc</option>
+      </select>
+
+      <div class="row right" style="margin-top:8px">
+        <button id="registerBtn" class="secondary">Register</button>
+        <button id="loginBtn">Login</button>
       </div>
-      <div class="small muted">No real authentication — just a demo identity.</div>
+      <div class="small muted">
+        First registered user becomes <strong>admin</strong>. Others are <strong>students</strong>.
+      </div>
+    </div>
+
     </div>
   </div>
+
 
   <!-- report modal -->
   <div id="reportModal" class="modal hidden">
