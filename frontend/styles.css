@@ -318,3 +318,24 @@ textarea {
     font-size: 26px;
   }
 }
+
+/* ===== Select dropdown theming ===== */
+
+select {
+  background: #3a3633;            /* same as cards */
+  color: var(--text);
+  border: 1px solid #4a443f;
+}
+
+/* options list background (works in most browsers) */
+select option {
+  background: #3a3633;
+  color: var(--text);
+}
+
+/* on focus, keep it in theme */
+select:focus {
+  outline: none;
+  border-color: #e2b04a;
+  box-shadow: 0 0 0 1px rgba(226,176,74,0.4);
+}

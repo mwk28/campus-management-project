@@ -365,31 +365,31 @@ function showDashboard() {
         {
           id: "library",
           title: "Library",
-          desc: "Manage books: add, rent, return (connected to backend)",
+          desc: "Manage books: add, rent, return ",
           img: "assets/cards/library.jpg",
         },
         {
           id: "washing",
           title: "Washing Area",
-          desc: "See machine usage & reserve (connected to backend)",
+          desc: "See machine usage & reserve ",
           img: "assets/cards/washing.jpg",
         },
         {
           id: "badminton",
           title: "Badminton Court",
-          desc: "Book slots for play (connected to backend)",
+          desc: "Book slots for play ",
           img: "assets/cards/badminton.jpg",
         },
         {
           id: "sports",
           title: "Sports Items",
-          desc: "Use and track sports equipment (connected to backend)",
+          desc: "Use and track sports equipment ",
           img: "assets/cards/sports.jpg",
         },
         {
           id: "notices",
           title: "Notice Board",
-          desc: "Mess menu and upcoming events",
+          desc: "Notices, menus and upcoming events",
           img: "assets/cards/food.jpg",
         },
         {
@@ -421,7 +421,7 @@ function showDashboard() {
       else if (m.id === "washing") renderWashing();
       else if (m.id === "badminton") renderBadminton();
       else if (m.id === "sports") renderSports();
-      
+      else if (m.id === "pyqs") renderPyqs();
       else alert("Coming soon — will be added later");
     });
     tiles.appendChild(el);
@@ -660,7 +660,7 @@ async function renderWashing() {
     loginWrap.classList.remove("hidden");
     return;
   }
-
+  
   mainArea.innerHTML = '';
   const isAdmin = auth.user && auth.user.role === 'admin';
 
@@ -1368,5 +1368,91 @@ async function renderSports() {
   }
 
   await loadItems();
+}
+
+// ========== PYQs (coming soon screen with sem & course) ==========
+async function renderPyqs() {
+  if (!auth.user) {
+    alert("Please sign in to view PYQs.");
+    loginWrap.classList.remove("hidden");
+    return;
+  }
+
+  mainArea.innerHTML = "";
+
+  const card = document.createElement("div");
+  card.className = "card";
+  card.innerHTML = `
+    <h3>Previous Year Question Papers (PYQs)</h3>
+    <p class="small muted" style="margin-top:4px;">
+      Select your semester and course to view question papers.
+    </p>
+
+    <div class="row" style="margin-top:14px; gap:12px; flex-wrap:wrap;">
+      <div style="flex:1; min-width:160px;">
+        <label class="small muted">Semester</label>
+        <select id="pyqSem">
+          <option value="">Select semester</option>
+          <option value="1st Sem">1st Sem</option>
+          <option value="2nd Sem">2nd Sem</option>
+          <option value="3rd Sem">3rd Sem</option>
+          <option value="4th Sem">4th Sem</option>
+          <option value="5th Sem">5th Sem</option>
+          <option value="6th Sem">6th Sem</option>
+          <option value="7th Sem">7th Sem</option>
+          <option value="8th Sem">8th Sem</option>
+        </select>
+      </div>
+
+      <div style="flex:1; min-width:160px;">
+        <label class="small muted">Course</label>
+        <select id="pyqCourse">
+          <option value="">Select course</option>
+          <option value="B.Tech">B.Tech</option>
+          <option value="B.Sc">B.Sc</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="row right" style="margin-top:14px;">
+      <button id="pyqOpenBtn">Open</button>
+    </div>
+
+    <div id="pyqResult" style="margin-top:18px;">
+      <div class="small muted">
+        Please select semester and course, then click <strong>Open</strong>.
+      </div>
+    </div>
+  `;
+
+  mainArea.appendChild(card);
+
+  const semSelect = document.getElementById("pyqSem");
+  const courseSelect = document.getElementById("pyqCourse");
+  const openBtn = document.getElementById("pyqOpenBtn");
+  const resultBox = document.getElementById("pyqResult");
+
+  openBtn.onclick = () => {
+    const sem = semSelect.value;
+    const course = courseSelect.value;
+
+    if (!sem || !course) {
+      alert("Please select both semester and course.");
+      return;
+    }
+
+    // For now just show Coming Soon message
+    resultBox.innerHTML = `
+      <div class="card" style="background:#36322f; border-radius:10px; padding:14px; margin-top:6px;">
+        <div><strong>${course} – ${sem}</strong></div>
+        <div class="small muted" style="margin-top:4px;">
+          PYQs for this combination will be uploaded soon.<br/>
+          <span class="small">Please check again later.</span>
+        </div>
+      </div>
+    `;
+
+    addActivity(`Checked PYQs for ${course} – ${sem} (coming soon).`);
+  };
 }
 
