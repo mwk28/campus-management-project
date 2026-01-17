@@ -1,5 +1,6 @@
 // app.js — frontend connected to Node + Express + SQLite backend
 
+
 // we still use localStorage only for: users, reports, activities
 const STORAGE_KEY = "campus_frontend_state_v3";
 const API_BASE = ""; // same origin: http://localhost:4000
